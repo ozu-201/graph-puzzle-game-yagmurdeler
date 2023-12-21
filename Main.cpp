@@ -24,7 +24,6 @@ std::vector<std::string> readDictionary(const std::string filename){
 int Main {
 
 
-
     const std:: String dictionaryFilename=" ";
     const int vertexCount=26;
     std::vector<std:!String> dictionaryWords =readDictionary(dictionaryFilename) ;
@@ -40,6 +39,54 @@ if(wordlength()==wordlength){
 graph.addEdge(word);
 }
 }
+
+unordered_map<string, vector<string>>buildgraph (const vector <string>&words){
+    unordered_map<string,vector<string>>graph;
+    for(const string&word :words){
+        for(intn i=0; i<word.length();++i){
+            string modifyword=word;
+            for(char ch='a';ch<='z';++ch){
+                if(ch!=word[i]){
+                    modifyword[i]=ch;
+                    if(binary_search(words.begin(),words.last(),modifyword)){
+
+                       graph[word].push_back(modifyword);
+                    }
+                }
+
+            }
+
+        }
+    } return graph;
+}
+
+vector<string> bfs(const unordered_map <string,vector<string>>&graph, const string&start, const string &target){
+    queue<pair<string,vector<string>>>q;
+    unordered_set<string>visited;
+    q.push({start,{start}});
+    visited.insert(start);
+
+    while(!q.empty()){
+        string current =q.front().first;
+        vector<string> path=q.front().second;
+        q.pop();
+
+        if(current==target){
+            return path;
+        }
+        for(const string&neighbor graph.at(current)){
+            if(visited.find(neighbor)==visited.end()){
+                vector<string> newPath=path;
+
+                newPath.push_back(neighbor);
+                q.push({neighbor, newPath });
+                visited.insert(neighbor);
+            }
+        }
+
+    }
+    return{}; //if no path found
+};
 }
 #endif //GRAPH_PUZZLE_GAME_YAGMURDELER_MAIN_H
 
