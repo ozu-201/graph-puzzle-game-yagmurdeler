@@ -7,8 +7,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <windows.h>
+#include "src/List/Graph/Graph.h"
 
 using namespace std;
+using namespace list;
 
 std::vector<std::string> readDictionary(const std::string filename){
 
@@ -24,7 +27,7 @@ std::vector<std::string> readDictionary(const std::string filename){
 int Main {
 
 
-    const std:: String dictionaryFilename=" ";
+    const std::String dictionaryFilename=" ";
     const int vertexCount=26;
     std::vector<std:!String> dictionaryWords =readDictionary(dictionaryFilename) ;
     Graph graph (vertexCount);
@@ -40,7 +43,7 @@ graph.addEdge(word);
 }
 }
 
-unordered_map<string, vector<string>>buildgraph (const vector <string>&words){
+unordered_map<string, vector<string>> buildgraph (const vector <string>&words){
     unordered_map<string,vector<string>>graph;
     for(const string&word :words){
         for(intn i=0; i<word.length();++i){
@@ -90,4 +93,3 @@ vector<string> bfs(const unordered_map <string,vector<string>>&graph, const stri
 }
 #endif //GRAPH_PUZZLE_GAME_YAGMURDELER_MAIN_H
 
-#include "Main.h"
